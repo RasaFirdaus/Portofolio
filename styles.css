@@ -98,24 +98,20 @@ nav ul li a:hover {
     color: #333;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #282c34;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
+/* Profile Picture */
 .about-container {
-    display: flex; /* Menggunakan flexbox untuk tata letak */
-    align-items: center; /* Menjaga gambar dan teks sejajar secara vertikal */
+    display: flex;
+    align-items: center;
 }
 
 .profile-pic {
-    width: 200px; /* Lebar gambar 200 piksel */
-    height: 200px; /* Tinggi gambar 200 piksel */
-    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
-    margin-right: 20px; /* Memberikan jarak antara gambar dan teks */
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-right: 20px;
 }
+
+/* Project Thumbnails */
 .project-thumbnail {
     width: 150px;
     height: auto;
@@ -127,18 +123,7 @@ footer {
     transform: scale(1.1);
 }
 
-.popup {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    padding-top: 100px;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-/* Popup Layout */
+/* Popup Styles */
 .popup {
     display: none;
     position: fixed;
@@ -148,23 +133,22 @@ footer {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    overflow-y: auto; /* Enable scrolling for the entire popup if content exceeds the screen height */
+    overflow-y: auto; /* Enable scrolling for content that overflows the popup */
 }
 
 .popup-content-wrapper {
     display: flex;
-    justify-content: flex-start; /* Align items to the left */
-    align-items: flex-start; /* Align content at the top */
+    justify-content: flex-start;
+    align-items: flex-start;
     max-width: 80%;
     margin: auto;
     padding: 20px;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
-    max-height: 90vh; /* Set a maximum height to make room for scrolling */
-    overflow-y: auto; /* Enable scrolling within the popup content if necessary */
+    max-height: 90vh; /* Set a max height to make room for scrolling */
+    overflow-y: auto; /* Enable scrolling within popup */
 }
 
-/* Gambar Utama di Kiri (ukuran lebih besar) */
 .popup-main-image {
     flex: 1;
     text-align: center;
@@ -177,7 +161,6 @@ footer {
     margin-right: 20px;
 }
 
-/* Gambar Tambahan di Kanan (ukuran sedang) */
 .popup-additional-images {
     display: flex;
     flex-direction: column;
@@ -209,3 +192,92 @@ footer {
     text-decoration: none;
     cursor: pointer;
 }
+
+/* Footer Styles */
+footer {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Responsive for Tablets and Mobile */
+@media (max-width: 1024px) {
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 90%;
+    }
+
+    .popup-content-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .popup-content-main {
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .popup-additional-images {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .popup-thumbnail {
+        max-width: 45%;
+        margin: 5px;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .profile-pic {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    .header-text h1 {
+        font-size: 28px;
+    }
+
+    .header-text p {
+        font-size: 16px;
+    }
+
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .project {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .popup-content-main {
+        max-width: 90%;
+    }
+
+    .popup-thumbnail {
+        max-width: 100%;
+    }
+}
+
