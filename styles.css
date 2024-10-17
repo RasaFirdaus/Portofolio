@@ -1,0 +1,211 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+/* Header Styles */
+header {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.header-text {
+    margin-top: 20px;
+}
+
+.header-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.header-text p {
+    font-size: 18px;
+}
+
+/* Section Styles */
+.section {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #fff;
+    margin: 20px 0;
+}
+
+.section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #282c34;
+}
+
+.section p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Projects Section */
+.projects-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.project {
+    background-color: #f4f4f4;
+    padding: 20px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.project h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.project p {
+    color: #333;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #282c34;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+.about-container {
+    display: flex; /* Menggunakan flexbox untuk tata letak */
+    align-items: center; /* Menjaga gambar dan teks sejajar secara vertikal */
+}
+
+.profile-pic {
+    width: 200px; /* Lebar gambar 200 piksel */
+    height: 200px; /* Tinggi gambar 200 piksel */
+    border-radius: 50%; /* Membuat gambar berbentuk lingkaran */
+    margin-right: 20px; /* Memberikan jarak antara gambar dan teks */
+}
+.project-thumbnail {
+    width: 150px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.project-thumbnail:hover {
+    transform: scale(1.1);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+/* Popup Layout */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow-y: auto; /* Enable scrolling for the entire popup if content exceeds the screen height */
+}
+
+.popup-content-wrapper {
+    display: flex;
+    justify-content: flex-start; /* Align items to the left */
+    align-items: flex-start; /* Align content at the top */
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+    max-height: 90vh; /* Set a maximum height to make room for scrolling */
+    overflow-y: auto; /* Enable scrolling within the popup content if necessary */
+}
+
+/* Gambar Utama di Kiri (ukuran lebih besar) */
+.popup-main-image {
+    flex: 1;
+    text-align: center;
+}
+
+.popup-content-main {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+/* Gambar Tambahan di Kanan (ukuran sedang) */
+.popup-additional-images {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex: 2;
+}
+
+.popup-thumbnail {
+    max-width: 750px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
