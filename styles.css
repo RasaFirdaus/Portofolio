@@ -44,6 +44,18 @@ header {
     padding: 20px 0;
     text-align: center;
 }
+.about-container {
+    display: flex;
+    flex-direction: column; /* Change to column to stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+}
 
 nav ul {
     list-style: none;
