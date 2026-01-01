@@ -8,7 +8,7 @@ function createParticle(x, y) {
     document.body.appendChild(particle);
 
     // Remove particle after animation
-    setTimeout(() => particle.remove(), 1000);
+    setTimeout(() => particle.remove(), 100);
 }
 // Event listener for mouse movement
 document.addEventListener('mousemove', (e) => {
