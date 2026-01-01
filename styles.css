@@ -1,14 +1,25 @@
-/* Background Image with Parallax Effect */
 body {
-    background-image: url('img/BG.png');
-    background-attachment: fixed;
-    background-size: cover;
-    background-repeat: no-repeat;
+    position: relative;
     overflow-x: hidden;
 }
 
+/* Pseudo-element for the background blur */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/BG2.png');
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: blur(1.5px);
+    z-index: -1;
+}
 
-/* Particle styling */
+/* Gaya Partikel */
 .particle {
     position: fixed;
     width: 12px;
@@ -22,41 +33,81 @@ body {
     );
     pointer-events: none;
     opacity: 0.8;
-    animation: twinkle 2s ease-out forwards infinite;
+    animation: berkilau 2s ease-out forwards infinite;
 }
 
-/* Twinkle effect for star particles */
-@keyframes twinkle {
+/* Efek Berkilau untuk Partikel */
+@keyframes berkilau {
     0% { transform: scale(1); opacity: 0.8; }
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 0.8; }
 }
-/* Bintang bergerak ke bawah */
-@keyframes fall {
+
+/* Animasi Partikel Jatuh */
+@keyframes jatuh {
     0% { transform: translateY(-100vh) scale(0.8); }
     100% { transform: translateY(100vh) scale(0.8); }
 }
 
-/* Header Styles */
+/* Gaya Header */
 header {
-    background-color: #282c3493;
+    background-color: #282c3417;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
 .about-container {
     display: flex;
-    flex-direction: column; /* Change to column to stack items vertically */
-    align-items: center; /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-pic {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-bottom: 20px; /* Add margin at the bottom for spacing */
+    margin-bottom: 20px;
 }
 
+/* Link Boxes Container */
+.link-boxes-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* Link Box Style */
+.link-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #DAE8FD;
+    padding: 15px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    transition: all 0.3s ease;
+    width: 180px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.link-box:hover {
+    background-color: #5a667c;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.link-box-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+/* Navigation Links Style */
 nav ul {
     list-style: none;
     display: flex;
@@ -69,7 +120,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 18px;
 }
@@ -78,6 +129,7 @@ nav ul li a:hover {
     text-decoration: underline;
 }
 
+/* Header Text */
 .header-text {
     margin-top: 20px;
 }
@@ -111,7 +163,7 @@ nav ul li a:hover {
     margin-bottom: 20px;
 }
 
-/* Projects Section */
+/* Projects Container */
 .projects-container {
     display: flex;
     justify-content: center;
@@ -120,7 +172,7 @@ nav ul li a:hover {
 }
 
 .project {
-    background-color: #f4f4f4de;
+    background-color: #7B8FAB;
     padding: 20px;
     width: 30%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -135,20 +187,7 @@ nav ul li a:hover {
     color: #333;
 }
 
-/* Profile Picture */
-.about-container {
-    display: flex;
-    align-items: center;
-}
-
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-/* Project Thumbnails */
+/* Project Thumbnail Style */
 .project-thumbnail {
     width: 150px;
     height: auto;
@@ -160,7 +199,7 @@ nav ul li a:hover {
     transform: scale(1.1);
 }
 
-/* Popup Styles */
+/* Popup Style */
 .popup {
     display: none;
     position: fixed;
@@ -170,7 +209,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.719);
-    overflow-y: auto; /* Enable scrolling for content that overflows the popup */
+    overflow-y: auto;
 }
 
 .popup-content-wrapper {
@@ -182,63 +221,26 @@ nav ul li a:hover {
     padding: 20px;
     background-color: rgba(255, 255, 255, 0);
     border-radius: 10px;
-    max-height: 90vh; /* Set a max height to make room for scrolling */
-    overflow-y: auto; /* Enable scrolling within popup */
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
-.popup-main-image {
-    flex: 1;
-    text-align: center;
-}
-
+/* Update untuk gambar dalam popup */
 .popup-content-main {
-    max-width: 300px;
-    height: auto;
-    border-radius: 5px;
-    margin-right: 20px;
+    max-width: 100%;        /* Mencegah gambar melebihi lebar layar */
+    height: auto;           /* Menjaga rasio aspek gambar */
+    max-height: 80vh;       /* Membatasi tinggi gambar hingga 80% dari tinggi layar */
+    object-fit: contain;    /* Memastikan gambar sesuai dengan kontainer tanpa terdistorsi */
 }
 
-.popup-additional-images {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex: 2;
+/* Sesuaikan untuk layar kecil */
+@media (max-width: 768px) {
+    .popup-content-main {
+        max-width: 100%;   /* Membatasi lebar gambar agar sesuai dengan layar kecil */
+    }
 }
-
-.popup-thumbnail {
-    max-width: 750px;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.close {
-    position: absolute;
-    top: 15px;
-    right: 35px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.close:hover,
-.close:focus {
-    color: #bbb;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #282c34d1;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Responsive for Tablets and Mobile */
+    
+/* Responsive for Tablet and Mobile */
 @media (max-width: 1024px) {
     .projects-container {
         flex-direction: column;
@@ -316,4 +318,87 @@ footer {
     .popup-thumbnail {
         max-width: 100%;
     }
+
+    .link-boxes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .link-box {
+        width: 80%;
+    }
+}
+
+/* Change color of links inside <p> tags */
+p a {
+    color: #6D9886;
+    text-decoration: underline;
+}
+
+/* Change color when hovering over the link */
+p a:hover {
+    color: #dc3545;
+    text-decoration: underline;
+}
+
+/* Change color of all <a> links */
+a {
+    color: #6D9886;
+    text-decoration: underline;
+}
+
+/* Change color when hovering over any <a> tag */
+a:hover {
+    color: #dc3545;
+    text-decoration: underline;
+}
+
+/* Kontainer untuk setiap informasi kontak */
+#contact {
+    display: flex;
+    flex-wrap: wrap;  /* Memungkinkan elemen untuk berpindah ke baris berikutnya jika perlu */
+    justify-content: center;  /* Untuk meratakan elemen secara horizontal */
+    gap: 20px;  /* Jarak antar elemen */
+    margin-top: 20px;
+}
+
+#contact h2 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Gaya untuk setiap kotak informasi kontak */
+#contact p {
+    background-color: #DAE8FD;  /* Warna latar kotak */
+    width: 200px;               /* Lebar kotak */
+    height: 120px;              /* Tinggi kotak */
+    display: flex;
+    flex-direction: column;     /* Menata gambar di atas teks */
+    justify-content: center;    /* Menjaga posisi gambar dan teks tetap terpusat secara vertikal */
+    align-items: center;        /* Menjaga posisi gambar dan teks tetap terpusat secara horizontal */
+    border-radius: 8px;         /* Sudut kotak melengkung */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    text-align: center;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Efek hover */
+}
+
+/* Efek hover saat kursor di atas kotak */
+#contact p:hover {
+    background-color: #5a667c; /* Mengubah warna latar saat hover */
+    transform: translateY(-3px); /* Kotak terangkat sedikit */
+}
+
+/* Menambahkan gaya untuk ikon dalam kotak */
+.contact-icon {
+    width: 40px;                /* Ukuran ikon */
+    height: 40px;               /* Ukuran ikon */
+    margin-bottom: 10px;        /* Memberikan jarak antara ikon dan teks */
+}
+
+/* Mengubah warna tautan saat hover */
+#contact p a:hover {
+    color: #fff;                /* Ubah warna teks menjadi putih saat hover */
+    text-decoration: underline; /* Memberikan efek garis bawah saat hover */
 }
