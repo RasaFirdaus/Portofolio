@@ -1,1 +1,410 @@
-a
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <h1>Welcome to Raihan Portfolio</h1>
+            <p>UI-UX Designer | Game Developer  </p>
+        </div>
+    </header>
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <div class="about-container">
+            <div class="profile-pic-container">
+            <img src="img\ass.png" alt="My Profile Picture" class="profile-pic" />
+            <div class="inner-glow"></div>
+            </div>
+            <p>I'm Raihan Satria, from Politeknik Elektronika Negeri Surabaya (PENS) specializing in UI/UX Design and Game Development (Game Design & Programming). With over 3 years of experience in game development, 
+                <br> I've achieved recognition as a two-time national finalist and an international champion in game competitions. Additionally, I have extensive experience as a Graphic Designer and UI/UX Designer for web and mobile applications.</p>
+            
+        <!-- SKILLS SECTION - TAMBAHKAN DI SINI -->
+        <div class="skills-section">
+            <h3>Technical Skills</h3>
+            <div class="skills-container">
+                <div class="skill-item">
+                    <div class="skill-frame">
+                        <img src="img/Unity.png" alt="Unity" class="skill-icon">
+                    </div>
+                    <span>Unity</span>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-frame">
+                        <img src="img/Figma.png" alt="Figma" class="skill-icon">
+                    </div>
+                    <span>Figma</span>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-frame">
+                        <img src="img/AI.png" alt="Adobe Illustrator" class="skill-icon">
+                    </div>
+                    <span>Illustrator</span>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-frame">
+                        <img src="img/VSC.png" alt="VS Code" class="skill-icon">
+                    </div>
+                    <span>VS Code</span>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-frame">
+                        <img src="img/RS.png" alt="Roblox Studio" class="skill-icon">
+                    </div>
+                    <span>Roblox Studio</span>
+                </div>
+            </div>
+        </div>
+        <!-- END SKILLS SECTION -->
+
+            <!-- Link Boxes Container -->
+            <div class="link-boxes-container">
+                <!-- Certification Link Box -->
+                <a href="https://tes899.my.canva.site/sertifrasa" target="_blank" class="link-box">
+                    <img src="img\certificate-icon.webp" alt="Certificate Icon" class="link-box-icon">
+                    <span>Certifications</span>
+                </a>
+                
+                <!-- Copyright Link Box -->
+                <a href="https://tes899.my.canva.site/hki-rasa" target="_blank" class="link-box">
+                    <img src="img/copyright-icon.png" alt="Copyright Icon" class="link-box-icon">
+                    <span>Game Copyright</span>
+                </a>
+            </div>
+        </div>
+    </section>    
+    <section id="projects" class="section">
+        <h2>My Projects</h2>
+        <div class="projects-container">
+            <div class="project" id="project1">
+                <img src="img/Group 33.png" alt="Project 1 Thumbnail" class="project-thumbnail" onclick="openPopup('popup1')" />
+                <h3>Nusa's Herb</h3>
+            <p>Nusa's Herb is a game with a 2D Cooking and Business Simulator genre. Players will craft drinks from herbs and sell them to earn money
+                <br>
+                <span style="color: rgba(237, 235, 100, 0.902);">(Finalist Gemastik 2023)</span>
+            </p>
+                <p>As UI-UX Designer</p>
+                <a href="https://h0peless.itch.io/nusas-herb" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project2">
+                <img src="img\LOGO.png" alt="Project 2 Thumbnail" class="project-thumbnail" onclick="openPopup('popup2')" />
+                <h3>Khodam Knight Battle</h3>
+                <p>Khodam Knight Battle (KKB) is an RPG & Adventure-based game that combines elements of Indonesian mystic mythology with a medieval fantasy style and Hack & Slash gameplay</p>
+                <p><strong>As Mechanic Game Programmer</strong></p>
+                <a href="https://rasafirdaus.itch.io/khodam-knight" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project3">
+                <img src="img\Project Grow Logo.png" alt="Project 3 Thumbnail" class="project-thumbnail" onclick="openPopup('popup3')" />
+                <h3>Project Grow</h3>
+            <p>A resource management game where players take on the role of a plant. The main objective is to grow as tall as possible, reaching towards the heavens
+                <br>
+                <span style="color: rgba(237, 235, 100, 0.902);">(Champion LO Kreatif 2024 International Level)</span>
+            </p>
+                <p>As UI-UX Designer</p>
+                <a href="https://imfeelingood.itch.io/project-grow-android" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project4">
+                <img src="img\Logo Apk.png" alt="Project 4 Thumbnail" class="project-thumbnail" onclick="openPopup('popup4')" />
+                <h3>Nusa Herba</h3>
+            <p>Nusa Herba is a mobile game based on Point and Click with 3D motion AR, where players simulate being Aurel, a Gen Z girl who learns to recognize herbal plants and spices from Indonesia
+                <br>
+                <span style="color: rgba(237, 235, 100, 0.902);">(Finalist Gemastik 2024)</span>
+            </p>
+                <p>As Game Designer, Story Writter, UI-UX Designer</p>
+                <a href="https://rasafirdaus.itch.io/nusa-herba" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project5">
+                <img src="img\icon game.png" alt="Project 5 Thumbnail" class="project-thumbnail" onclick="openPopup('popup5')" />
+                <h3>You're The Prey</h3>
+                <p>You're the Prey is a horror game for the PC platform. Players will shoot ducks while being watched by a mysterious entity called "the thing"</p>
+                <p>As UI Game Programmer</p>
+                <a href="https://imfeelingood.itch.io/youre-the-prey" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project6">
+                <img src="img\Frame 8.png" alt="Project 6 Thumbnail" class="project-thumbnail" onclick="openPopup('popup6')" />
+                <h3>I'am a Vending Machine</h3>
+                <p>Ever wanted to be a vending machine? Now’s your chance! Serve, dispense, and score as many score as you can!</p>
+                <p>As UI-UX Designer</p>
+                <a href="https://imfeelingood.itch.io/im-a-vending-machine" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project7">
+                <img src="img\Group 115.png" alt="Project 7 Thumbnail" class="project-thumbnail" onclick="openPopup('popup7')" />
+                <h3>HoverRush</h3>
+                <p>Control a highspeed hovercraft going through a neon-lit tunnel. Dodge obstacles, collect power-ups, and survive as long as possible!</p>
+                <p>As UI-UX Designer & UI Game Programmer</p>
+                <a href="https://imfeelingood.itch.io/hoverrush" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project8">
+                <img src="img\image 16.png" alt="Project 8 Thumbnail" class="project-thumbnail" onclick="openPopup('popup8')" />
+                <h3>Paket Malam</h3>
+                <p>In Paket Malam, you're the new package inspector at a mysterious facility. Your job is to scan them, inspect the contents, and decide the package is allowed or not</p>
+                <p>As UI-UX Designer & UI Game Programmer</p>
+                <a href="https://imfeelingood.itch.io/paket-malam" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project9">
+                <img src="img\icon EB.png" alt="Project 9 Thumbnail" class="project-thumbnail" onclick="openPopup('popup9')" />
+                <h3>Elden Ball</h3>
+                <p>Elden Ball is an endless top-down action game where you control a powerful ball, battling waves of enemies. Aim, slow down time, and survive as long as you can!</p>
+                <p>As UI-UX Designer & UI Game Programmer</p>
+                <a href="https://imfeelingood.itch.io/elden-ball" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project10">
+                <img src="img\AIB.png" alt="Project 10 Thumbnail" class="project-thumbnail" onclick="openPopup('popup10')" />
+                <h3>Alam Ghoib</h3>
+                <p>Alam Ghaib is an indie narrative story game created using Figma. It is a single-developer project built entirely within the Figma platform.</p>
+                <p>As Solo Developer</p>
+                <a href="https://www.figma.com/proto/r2HhMEQoXEUkKYKHYMyhRl/29-Raihan?node-id=274-35&p=f&t=gmNe7yShezZyP0OR-1&scaling=min-zoom&content-scaling=fixed&page-id=274%3A5&starting-point-node-id=274%3A35" target="_blank">Link Game</a></li>
+            </div>
+            <div class="project" id="project11">
+                <img src="img\1.png" alt="Project 11 Thumbnail" class="project-thumbnail" onclick="openPopup('popup11')" />
+                <h3>My First Platfomers</h3>
+                <p>My First Platfomers is a Roblox game developed using Roblox Studio. It serves as an educational platformer designed to teach children the basics of Roblox Studio development.</p>
+                <p>As Game Programmer</p>
+            </div>
+            <div class="project" id="project12">
+                <img src="img\2.png" alt="Project 12 Thumbnail" class="project-thumbnail" onclick="openPopup('popup12')" />
+                <h3>The Dark Mountain of Calamity</h3>
+                <p>The Dark Mountain of Calamity is a Roblox game with a horror mountain-climbing theme. Players must ascend the mountain, overcoming various environmental and skill-based challenges in order to reach the summit.</p>
+                <p>As Game Designer</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Popup Modals for Projects -->
+    <div id="popup1" class="popup">
+        <span class="close" onclick="closePopup('popup1')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img/Group 33.png" alt="Project 1 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\Screenshot 2024-10-16 223556.png" alt="Project 1 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\Screenshot 2024-10-16 223602.png" alt="Project 1 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\Screenshot 2024-10-16 223637.png" alt="Project 1 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup2" class="popup">
+        <span class="close" onclick="closePopup('popup2')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\LOGO.png" alt="Project 2 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\Screenshot 2024-10-16 213530.png" alt="Project 2 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\Screenshot 2024-10-16 213546.png" alt="Project 2 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\Screenshot 2024-10-16 213607.png" alt="Project 2 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup3" class="popup">
+        <span class="close" onclick="closePopup('popup3')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\Project Grow Logo.png" alt="Project 3 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\WhatsApp Image 2024-10-16 at 22.39.40_198c027f.jpg" alt="Project 3 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\WhatsApp Image 2024-10-16 at 22.39.40_70e32592.jpg" alt="Project 3 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\WhatsApp Image 2024-10-16 at 22.39.40_0c8d9798.jpg" alt="Project 3 Additional Image 2" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup4" class="popup">
+        <span class="close" onclick="closePopup('popup4')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\Logo Apk.png" alt="Project 4 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\NS1.png" alt="Project 4 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\NS2.png" alt="Project 4 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\NS3.png" alt="Project 4 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup5" class="popup">
+        <span class="close" onclick="closePopup('popup5')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\icon game.png" alt="Project 5 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\Prey.png" alt="Project 5 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\prey3.png" alt="Project 5 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\Prey1.png" alt="Project 5 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup6" class="popup">
+        <span class="close" onclick="closePopup('popup6')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\Frame 8.png" alt="Project 6 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\IVM1.png" alt="Project 6 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\IVM2.png" alt="Project 6 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\IVM3.png" alt="Project 6 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup7" class="popup">
+        <span class="close" onclick="closePopup('popup7')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\Group 115.png" alt="Project 7 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\H1.png" alt="Project 7 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\H2.png" alt="Project 7 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\H3.png" alt="Project 7 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup8" class="popup">
+        <span class="close" onclick="closePopup('popup8')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\image 16.png" alt="Project 8 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\PM1.png" alt="Project 8 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\PM2.png" alt="Project 8 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\PM3.png" alt="Project 8 Additional Image 3" class="popup-thumbnail" />
+            </div>
+        </div>
+    </div>
+    <div id="popup9" class="popup">
+        <span class="close" onclick="closePopup('popup9')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\icon EB.png" alt="Project 9 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\EB1.png" alt="Project 9 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\EB2.png" alt="Project 9 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\EB3.png" alt="Project 9 Additional Image 3" class="popup-thumbnail" />
+        </div>
+    </div>
+    </div>
+    <div id="popup10" class="popup">
+        <span class="close" onclick="closePopup('popup10')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\AIB.png" alt="Project 10 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\AIB1.png" alt="Project 10 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\AIB2.png" alt="Project 10 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\AIB3.png" alt="Project 10 Additional Image 3" class="popup-thumbnail" />
+        </div>
+    </div>
+    </div>
+    <div id="popup11" class="popup">
+        <span class="close" onclick="closePopup('popup11')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\1.png" alt="Project 11 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\RB1.png" alt="Project 11 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\RB2.png" alt="Project 11 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\RB3.png" alt="Project 11 Additional Image 3" class="popup-thumbnail" />
+        </div>
+    </div>
+    </div>
+    <div id="popup12" class="popup">
+        <span class="close" onclick="closePopup('popup12')">&times;</span>
+        <div class="popup-content-wrapper">
+            <img class="popup-content-main" src="img\2.png" alt="Project 12 Large Image" />
+            <div class="popup-additional-images">
+                <img src="img\PT1.png" alt="Project 12 Additional Image 1" class="popup-thumbnail" />
+                <img src="img\PT2.png" alt="Project 12 Additional Image 2" class="popup-thumbnail" />
+                <img src="img\PT3.png" alt="Project 12 Additional Image 3" class="popup-thumbnail" />
+        </div>
+    </div>
+    </div>
+
+    </section> <!-- Tutup section projects -->
+    
+    <!-- UI KITS PREVIEW SECTION -->
+    <section id="ui-kits" class="section">
+        <h2>UI Kits Preview</h2>
+        <div class="ui-kits-container">
+            <div class="ui-kit-item">
+                <div class="ui-kit-preview">
+                    <img src="img\NusaUI.png" 
+                         alt="UI Kit Example 1" class="ui-kit-image">
+                </div>
+                <div class="ui-kit-info">
+                    <h3>Nusa Herba UI Kit</h3>
+                    <p>A colorful UI designed for kids</p>
+                </div>
+            </div>
+            
+            <div class="ui-kit-item">
+                <div class="ui-kit-preview">
+                    <img src="img\PaketUI.png" 
+                         alt="UI Kit Example 2" class="ui-kit-image">
+                </div>
+                <div class="ui-kit-info">
+                    <h3>Paket Malam UI Kit</h3>
+                    <p>A rusted, horror-themed user interface</p>
+                </div>
+            </div>
+            
+            <div class="ui-kit-item">
+                <div class="ui-kit-preview">
+                    <img src="img\HoverUI.png" 
+                         alt="UI Kit Example 3" class="ui-kit-image">
+                </div>
+                <div class="ui-kit-info">
+                    <h3>HoverRush UI Kit</h3>
+                    <p>A futuristic UI with an astronomical theme</p>
+                </div>
+            </div>
+
+            <div class="ui-kit-item">
+                <div class="ui-kit-preview">
+                    <img src="img\VendingUI.png" 
+                         alt="UI Kit Example 3" class="ui-kit-image">
+                </div>
+                <div class="ui-kit-info">
+                    <h3>I'am a Vending Machine UI Kit</h3>
+                    <p>A colorful graffiti style interface with universal appeal</p>
+                </div>
+            </div>
+
+            <div class="ui-kit-item">
+                <div class="ui-kit-preview">
+                    <img src="img\EldenUI.png" 
+                         alt="UI Kit Example 3" class="ui-kit-image">
+                </div>
+                <div class="ui-kit-info">
+                    <h3>Elden Ball UI Kit</h3>
+                    <p>A medieval themed UI with skill icons and a dark color palette</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <!-- END UI KITS PREVIEW SECTION -->
+    
+<section id="contact" class="section">
+    <h2>Contact</h2>
+    <p class="contact-box">
+        <img src="img/Email.png" alt="Email Icon" class="contact-icon" />
+        Email: <a href="mailto:raihansatria11@gmail.com">raihansatria11@gmail.com</a>
+    </p>
+    <p class="contact-box">
+        <img src="img/WA.png" alt="WhatsApp Icon" class="contact-icon" />
+        WhatsApp: <a href="https://wa.me/6285733089533">+62857-3308-9533</a>
+    </p>
+    <p class="contact-box">
+        <img src="img/IG.png" alt="Instagram Icon" class="contact-icon" />
+        Instagram: <a href="https://www.instagram.com/rays_traus/">@rays_traus</a>
+    </p>
+    <p class="contact-box">
+        <img src="img/Itch.png" alt="Itch.io Icon" class="contact-icon" />
+        Itch.Io: <a href="https://gammacore.itch.io/">GammaCore</a>
+    </p>
+</section>
+
+    <footer>
+        <p>&copy; 2026 Raihan Satria Putra Firdaus. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+<script src="popup.js"></script>
