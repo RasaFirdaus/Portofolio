@@ -62,11 +62,184 @@ header {
     align-items: center;
 }
 
+/* ===== PROFILE PICTURE STYLES ===== */
+.profile-pic-container {
+    position: relative;
+    width: 220px; /* Sedikit lebih besar untuk border */
+    height: 220px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .profile-pic {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin-bottom: 20px;
+    object-fit: cover;
+    position: relative;
+    z-index: 3;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.4s ease;
+}
+
+/* Liquid Glass Border untuk Profile Picture */
+.profile-pic-container::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border-radius: 50%;
+    background: rgba(26, 29, 46, 0.6);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    z-index: 1;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Gradient Corner Border */
+.profile-pic-container::after {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.8) 0%, 
+        rgba(123, 104, 238, 0.6) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.6) 75%,
+        rgba(100, 149, 237, 0.8) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 2;
+    animation: rotateBorder 8s linear infinite;
+}
+
+/* Inner Glow */
+.profile-pic-container .inner-glow {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0.01) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Animation untuk rotating border */
+@keyframes rotateBorder {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Hover Effects */
+.profile-pic-container:hover::before {
+    background: rgba(38, 42, 65, 0.8);
+    box-shadow: 
+        0 20px 45px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+.profile-pic-container:hover .profile-pic {
+    transform: scale(1.05);
+    border-color: rgba(100, 149, 237, 0.3);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Pulse Animation */
+@keyframes profilePulse {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+    50% { 
+        transform: scale(1.02);
+        box-shadow: 0 15px 35px rgba(100, 149, 237, 0.3);
+    }
+}
+
+.profile-pic {
+    animation: profilePulse 4s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-pic-container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .profile-pic {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .profile-pic-container::before {
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+    }
+    
+    .profile-pic-container::after {
+        top: -10px;
+        left: -10px;
+        right: -10px;
+        bottom: -10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-pic-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+    
+    .profile-pic-container::before {
+        top: -6px;
+        left: -6px;
+        right: -6px;
+        bottom: -6px;
+    }
+    
+    .profile-pic-container::after {
+        top: -8px;
+        left: -8px;
+        right: -8px;
+        bottom: -8px;
+    }
 }
 
 /* Link Boxes Container */
@@ -79,32 +252,279 @@ header {
 }
 
 /* Link Box Style */
+/* ===== LINK BOXES CONTAINER - LIQUID GLASS STYLE ===== */
+.link-boxes-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+/* Liquid Glass Style for Link Box */
 .link-box {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #DAE8FD;
-    padding: 15px 25px;
-    border-radius: 8px;
     text-decoration: none;
-    color: rgb(0, 0, 0);
-    transition: all 0.3s ease;
-    width: 180px;
+    width: 220px;
+    height: 200px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    
+    /* Liquid Glass Background */
+    background: rgba(26, 29, 46, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 24px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    
+    /* Gradient Corner Border */
+    background-clip: padding-box;
 }
 
+/* Corner Decoration (similar to skills) */
+.link-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.8) 0%, 
+        rgba(123, 104, 238, 0.6) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.6) 75%,
+        rgba(100, 149, 237, 0.8) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+}
+
+/* Inner Glow */
+.link-box::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 22px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.05) 0%,
+        rgba(255, 255, 255, 0.02) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hover Effects */
 .link-box:hover {
-    background-color: #5a667c;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.03);
+    background: rgba(38, 42, 65, 0.85);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+/* Hover Corner Animation */
+.link-box:hover::before {
+    animation: cornerGlow 2s ease-in-out infinite;
+}
+
+@keyframes cornerGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+/* Icon Style */
+.link-box-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+    filter: 
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
+        brightness(1.1);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+.link-box:hover .link-box-icon {
+    transform: scale(1.1);
+    filter: 
+        drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))
+        brightness(1.2);
+}
+
+/* Text Style */
+.link-box span {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.link-box:hover span {
+    background: rgba(100, 149, 237, 0.25);
+    border-color: rgba(100, 149, 237, 0.4);
+    transform: scale(1.05);
+    text-shadow: 0 2px 12px rgba(100, 149, 237, 0.5);
+}
+
+/* Different Colors for Each Box */
+.link-box:nth-child(1) { /* Certifications */
+    background: rgba(30, 40, 70, 0.7);
+}
+
+.link-box:nth-child(1):hover {
+    background: rgba(40, 50, 90, 0.85);
+}
+
+.link-box:nth-child(1)::before {
+    background: linear-gradient(135deg, 
+        rgba(46, 204, 113, 0.8) 0%, 
+        rgba(39, 174, 96, 0.6) 25%,
+        transparent 50%,
+        rgba(46, 134, 222, 0.6) 75%,
+        rgba(52, 152, 219, 0.8) 100%);
+}
+
+.link-box:nth-child(2) { /* Game Copyright */
+    background: rgba(60, 30, 70, 0.7);
+}
+
+.link-box:nth-child(2):hover {
+    background: rgba(80, 40, 90, 0.85);
+}
+
+.link-box:nth-child(2)::before {
+    background: linear-gradient(135deg, 
+        rgba(155, 89, 182, 0.8) 0%, 
+        rgba(142, 68, 173, 0.6) 25%,
+        transparent 50%,
+        rgba(230, 126, 34, 0.6) 75%,
+        rgba(231, 76, 60, 0.8) 100%);
+}
+
+/* Pulse Animation on Icons */
+@keyframes pulseIcon {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 .link-box-icon {
-    width: 40px;
-    height: 40px;
-    margin-bottom: 10px;
+    animation: pulseIcon 3s ease-in-out infinite;
+}
+
+.link-box:hover .link-box-icon {
+    animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .link-boxes-container {
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .link-box {
+        width: 180px;
+        height: 170px;
+        border-radius: 20px;
+    }
+    
+    .link-box-icon {
+        width: 60px;
+        height: 60px;
+        margin-bottom: 15px;
+    }
+    
+    .link-box span {
+        font-size: 18px;
+        padding: 6px 16px;
+    }
+    
+    .link-box::before {
+        border-radius: 20px;
+    }
+    
+    .link-box::after {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .link-boxes-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .link-box {
+        width: 85%;
+        max-width: 250px;
+        height: 150px;
+        border-radius: 18px;
+    }
+    
+    .link-box-icon {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 12px;
+    }
+    
+    .link-box span {
+        font-size: 16px;
+        padding: 5px 14px;
+    }
+    
+    .link-box::before {
+        border-radius: 18px;
+    }
+    
+    .link-box::after {
+        border-radius: 16px;
+    }
+}
+
+/* Optional: Add floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.link-box {
+    animation: float 4s ease-in-out infinite;
+}
+
+.link-box:hover {
+    animation: none; /* Stop floating on hover */
 }
 
 /* Navigation Links Style */
@@ -164,29 +584,416 @@ nav ul li a:hover {
 }
 
 /* Projects Container */
+/* ===== PROJECTS CONTAINER STYLES ===== */
 .projects-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 20px;
-}
-
-.project {
-    background-color: #7B8FAB;
+    gap: 25px;
     padding: 20px;
-    width: 30%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Project Card - Liquid Glass Style */
+.project {
+    background: rgba(26, 29, 46, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 25px;
+    width: calc(33.333% - 17px); /* 3 kolom dengan gap */
+    min-width: 300px;
+    box-shadow: 
+        0 10px 25px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Corner Decoration */
+.project::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 1.5px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.8) 0%, 
+        rgba(123, 104, 238, 0.6) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.6) 75%,
+        rgba(100, 149, 237, 0.8) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+}
+
+/* Hover Effects */
+.project:hover {
+    transform: translateY(-5px);
+    background: rgba(38, 42, 65, 0.85);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+/* Project Title */
 .project h3 {
     font-size: 22px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
 }
 
+/* Project Description */
 .project p {
-    color: #333;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 2;
+    text-align: justify;
 }
 
+/* Role Text (yang ada "As...") */
+.project p:nth-last-of-type(2) {
+    color: oklch(67.463% 0.14145 261.353 / 0.902);
+    font-weight: 600;
+    font-style: bold;
+    text-align: center;
+}
+
+/* Link Styling */
+.project a {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: rgba(100, 149, 237, 0.8);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+.project a:hover {
+    background: rgba(100, 149, 237, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(100, 149, 237, 0.4);
+}
+
+/* Project Thumbnail */
+.project-thumbnail {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    margin-bottom: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.project-thumbnail:hover {
+    transform: scale(1.05);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .project {
+        width: calc(50% - 13px); /* 2 kolom pada tablet besar */
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .project {
+        width: 90%;
+        max-width: 400px;
+        padding: 20px;
+    }
+    
+    .project h3 {
+        font-size: 20px;
+    }
+    
+    .project p {
+        font-size: 13px;
+    }
+    
+    .project-thumbnail {
+        width: 130px;
+        height: 130px;
+    }
+}
+
+@media (max-width: 480px) {
+    .project {
+        width: 100%;
+        padding: 15px;
+    }
+    
+    .project h3 {
+        font-size: 18px;
+    }
+    
+    .project-thumbnail {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* ===== SKILLS SECTION STYLES ===== */
+
+.skills-section {
+    width: 100%;
+    max-width: 850px;
+    margin: 40px 0 30px;
+    padding: 30px;
+    background-color: rgba(26, 29, 46, 0.8);
+    border-radius: 20px;
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.skills-section h3 {
+    color: #ffffff;
+    font-size: 26px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 10px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.skill-item:hover {
+    transform: translateY(-8px);
+}
+
+.skill-frame {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #2a2d3e, #1f2232);
+    border-radius: 22px;
+    box-shadow: 
+        0 12px 24px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding: 5px; /* Padding minimal untuk border dalam */
+}
+
+/* Corner decoration - lebih tebal */
+.skill-frame::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 20px;
+    padding: 3px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.8) 0%, 
+        rgba(123, 104, 238, 0.6) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.6) 75%,
+        rgba(100, 149, 237, 0.8) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+}
+
+/* Inner glow effect */
+.skill-frame::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    pointer-events: none;
+}
+
+/* GAMBAR FULL DALAM KOTAK */
+.skill-icon {
+    width: 100%; /* Gambar memenuhi lebar frame */
+    height: 100%; /* Gambar memenuhi tinggi frame */
+    object-fit: contain; /* Gambar tidak terdistorsi */
+    padding: 12px; /* Padding dalam untuk gambar */
+    filter: 
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
+        brightness(1.1); /* Sedikit brighter */
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.skill-item:hover .skill-icon {
+    transform: scale(1.08);
+    filter: 
+        drop-shadow(0 6px 12px rgba(0, 0, 0, 0.4))
+        brightness(1.2);
+}
+
+/* Background khusus untuk setiap skill */
+.skill-item:nth-child(1) .skill-frame { background: linear-gradient(145deg, #1a1a2e, #16213e); } /* Unity */
+.skill-item:nth-child(2) .skill-frame { background: linear-gradient(145deg, #0a0a14, #1a0033); } /* Figma */
+.skill-item:nth-child(3) .skill-frame { background: linear-gradient(145deg, #330000, #660000); } /* Illustrator */
+.skill-item:nth-child(4) .skill-frame { background: linear-gradient(145deg, #001a33, #003366); } /* Photoshop */
+.skill-item:nth-child(5) .skill-frame { background: linear-gradient(145deg, #00334d, #006699); } /* VS Code */
+.skill-item:nth-child(6) .skill-frame { background: linear-gradient(145deg, #230736, #3a0ca3); } /* C# */
+
+.skill-item span {
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    padding: 5px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover span {
+    background: rgba(100, 149, 237, 0.3);
+    border-color: rgba(100, 149, 237, 0.5);
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .skills-section {
+        max-width: 90%;
+        padding: 25px;
+    }
+    
+    .skills-container {
+        gap: 25px;
+    }
+    
+    .skill-frame {
+        width: 90px;
+        height: 90px;
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-section {
+        padding: 20px 15px;
+        margin: 30px 0 20px;
+        border-radius: 18px;
+    }
+    
+    .skills-section h3 {
+        font-size: 22px;
+        margin-bottom: 25px;
+    }
+    
+    .skills-container {
+        gap: 20px;
+    }
+    
+    .skill-frame {
+        width: 80px;
+        height: 80px;
+        border-radius: 18px;
+    }
+    
+    .skill-icon {
+        padding: 10px;
+    }
+    
+    .skill-item span {
+        font-size: 13px;
+        padding: 4px 10px;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skills-section {
+        padding: 15px 10px;
+        margin: 25px 0 15px;
+    }
+    
+    .skills-container {
+        gap: 15px;
+    }
+    
+    .skill-frame {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+    }
+    
+    .skill-icon {
+        padding: 8px;
+    }
+    
+    .skill-item span {
+        font-size: 12px;
+        padding: 3px 8px;
+        margin-top: 10px;
+    }
+}
 /* Project Thumbnail Style */
 .project-thumbnail {
     width: 150px;
@@ -227,16 +1034,20 @@ nav ul li a:hover {
 
 /* Update untuk gambar dalam popup */
 .popup-content-main {
-    max-width: 100%;        /* Mencegah gambar melebihi lebar layar */
+    max-width: 50%;        /* Mencegah gambar melebihi lebar layar */
     height: auto;           /* Menjaga rasio aspek gambar */
-    max-height: 80vh;       /* Membatasi tinggi gambar hingga 80% dari tinggi layar */
+    max-height: 50vh;       /* Membatasi tinggi gambar hingga 80% dari tinggi layar */
     object-fit: contain;    /* Memastikan gambar sesuai dengan kontainer tanpa terdistorsi */
 }
+    .popup-thumbnail {
+        max-width: 100%;
+        margin: 5px;
+    }
 
 /* Sesuaikan untuk layar kecil */
-@media (max-width: 768px) {
+@media (max-width: 1025px) {
     .popup-content-main {
-        max-width: 100%;   /* Membatasi lebar gambar agar sesuai dengan layar kecil */
+        max-width: 80%;   /* Membatasi lebar gambar agar sesuai dengan layar kecil */
     }
 }
     
@@ -343,7 +1154,7 @@ p a:hover {
 
 /* Change color of all <a> links */
 a {
-    color: #6D9886;
+    color: #456155;
     text-decoration: underline;
 }
 
@@ -368,37 +1179,714 @@ a:hover {
     margin-bottom: 20px;
 }
 
-/* Gaya untuk setiap kotak informasi kontak */
-#contact p {
-    background-color: #DAE8FD;  /* Warna latar kotak */
-    width: 200px;               /* Lebar kotak */
-    height: 120px;              /* Tinggi kotak */
+/* ===== UI KITS PREVIEW SECTION - REVISED ===== */
+#ui-kits.section {
+    background-color: transparent;
+    padding: 60px 20px;
+}
+
+#ui-kits h2 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 50px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+    letter-spacing: 1.5px;
+    font-weight: 700;
+}
+
+.ui-kits-container {
     display: flex;
-    flex-direction: column;     /* Menata gambar di atas teks */
-    justify-content: center;    /* Menjaga posisi gambar dan teks tetap terpusat secara vertikal */
-    align-items: center;        /* Menjaga posisi gambar dan teks tetap terpusat secara horizontal */
-    border-radius: 8px;         /* Sudut kotak melengkung */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Efek bayangan */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* UI Kit Item - Fokus pada Gambar Besar */
+.ui-kit-item {
+    background: rgba(20, 23, 38, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 30px;
+    padding: 30px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Corner Decoration */
+.ui-kit-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 30px;
+    padding: 3px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.9) 0%, 
+        rgba(123, 104, 238, 0.7) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.7) 75%,
+        rgba(100, 149, 237, 0.9) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+}
+
+/* Hover Effects */
+.ui-kit-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    border-color: rgba(100, 149, 237, 0.4);
+}
+
+/* UI Kit Preview Area - DIKEMBANGKAN */
+.ui-kit-preview {
+    width: 100%;
+    height: 450px; /* Tinggi diperbesar */
+    background: linear-gradient(135deg, #0a0c1c, #15182e);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 25px; /* Jarak dikurangi */
+    position: relative;
+    z-index: 3;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        inset 0 0 30px rgba(0, 0, 0, 0.3),
+        0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.ui-kit-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Gambar memenuhi area */
+    transition: transform 0.7s ease, filter 0.5s ease;
+    filter: brightness(0.95) contrast(1.05);
+}
+
+.ui-kit-preview:hover .ui-kit-image {
+    transform: scale(1.03);
+    filter: brightness(1.05) contrast(1.1);
+}
+
+/* UI Kit Info - Jarak diperkecil */
+.ui-kit-info {
+    position: relative;
+    z-index: 3;
+    padding: 15px 10px 5px; /* Padding dikurangi */
+}
+
+.ui-kit-info h3 {
+    color: #ffffff;
+    font-size: 28px; /* Font sedikit lebih besar */
+    margin-bottom: 8px; /* Jarak dikurangi */
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    letter-spacing: 0.5px;
+}
+
+.ui-kit-info p {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+    line-height: 1.4; /* Line-height dikurangi */
+    margin-bottom: 5px; /* Margin bottom dikurangi */
     text-align: center;
-    color: #333;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Efek hover */
 }
 
-/* Efek hover saat kursor di atas kotak */
-#contact p:hover {
-    background-color: #5a667c; /* Mengubah warna latar saat hover */
-    transform: translateY(-3px); /* Kotak terangkat sedikit */
+/* Gradient Overlay untuk gambar */
+.ui-kit-preview::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%,
+        rgba(0, 0, 0, 0.1) 50%,
+        rgba(0, 0, 0, 0.2) 100%
+    );
+    pointer-events: none;
+    z-index: 2;
 }
 
-/* Menambahkan gaya untuk ikon dalam kotak */
+/* Different Colors for Each UI Kit */
+.ui-kit-item:nth-child(1) {
+    background: rgba(25, 35, 65, 0.85);
+}
+
+.ui-kit-item:nth-child(2) {
+    background: rgba(35, 25, 65, 0.85);
+}
+
+.ui-kit-item:nth-child(3) {
+    background: rgba(25, 55, 45, 0.85);
+}
+
+/* Note Section - Jarak diperkecil */
+.ui-kits-note {
+    max-width: 900px;
+    margin: 30px auto 0; /* Margin top dikurangi */
+    padding: 20px; /* Padding dikurangi */
+    background: rgba(20, 23, 38, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
+    position: relative;
+}
+
+.ui-kits-note::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 18px;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+        rgba(46, 204, 113, 0.7) 0%, 
+        rgba(39, 174, 96, 0.5) 50%,
+        rgba(46, 134, 222, 0.7) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.ui-kits-note p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px; /* Font size dikurangi */
+    line-height: 1.5; /* Line-height dikurangi */
+    margin-bottom: 8px; /* Margin bottom dikurangi */
+    position: relative;
+    z-index: 1;
+}
+
+.ui-kits-note p:first-child {
+    font-size: 16px; /* Font size dikurangi */
+    margin-bottom: 10px; /* Margin bottom dikurangi */
+}
+
+.ui-kits-note strong {
+    color: #2ecc71;
+    font-weight: 700;
+}
+
+/* Responsive Design untuk UI Kits */
+@media (max-width: 1200px) {
+    .ui-kit-item {
+        max-width: 800px;
+    }
+    
+    .ui-kit-preview {
+        height: 400px;
+    }
+}
+
+@media (max-width: 992px) {
+    .ui-kits-container {
+        gap: 30px;
+        padding: 20px;
+    }
+    
+    .ui-kit-item {
+        max-width: 700px;
+        padding: 25px;
+    }
+    
+    .ui-kit-preview {
+        height: 350px;
+        margin-bottom: 20px;
+    }
+    
+    .ui-kit-info h3 {
+        font-size: 24px;
+    }
+    
+    .ui-kit-info p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    #ui-kits.section {
+        padding: 40px 15px;
+    }
+    
+    #ui-kits h2 {
+        font-size: 30px;
+        margin-bottom: 40px;
+    }
+    
+    .ui-kit-item {
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 25px;
+    }
+    
+    .ui-kit-preview {
+        height: 300px;
+        margin-bottom: 15px;
+        border-radius: 15px;
+    }
+    
+    .ui-kit-info {
+        padding: 10px 5px 0;
+    }
+    
+    .ui-kit-info h3 {
+        font-size: 22px;
+        margin-bottom: 6px;
+    }
+    
+    .ui-kit-info p {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+    
+    .ui-kits-note {
+        padding: 15px;
+        margin: 25px auto 0;
+    }
+    
+    .ui-kits-note p {
+        font-size: 14px;
+    }
+    
+    .ui-kits-note p:first-child {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    #ui-kits h2 {
+        font-size: 26px;
+    }
+    
+    .ui-kit-preview {
+        height: 250px;
+    }
+    
+    .ui-kit-info h3 {
+        font-size: 20px;
+    }
+    
+    .ui-kit-info p {
+        font-size: 13px;
+    }
+    
+    .ui-kits-note {
+        padding: 12px;
+    }
+    
+    .ui-kits-note p {
+        font-size: 13px;
+    }
+}
+/* Gaya untuk setiap kotak informasi kontak */
+/* ===== CONTACT SECTION STYLES ===== */
+#contact.section {
+    background-color: transparent;
+    padding: 60px 20px;
+}
+
+#contact h2 {
+    font-size: 32px;
+    color: #ffffff;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px;
+}
+
+#contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+/* Contact Box - Liquid Glass Style */
+#contact p.contact-box {
+    background: rgba(26, 29, 46, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 24px;
+    padding: 30px 25px;
+    width: 200px;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+}
+
+/* Corner Decoration */
+#contact p.contact-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 24px;
+    padding: 2px;
+    background: linear-gradient(135deg, 
+        rgba(100, 149, 237, 0.8) 0%, 
+        rgba(123, 104, 238, 0.6) 25%,
+        transparent 50%,
+        rgba(70, 130, 180, 0.6) 75%,
+        rgba(100, 149, 237, 0.8) 100%);
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 1;
+}
+
+/* Inner Glow */
+#contact p.contact-box::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    border-radius: 22px;
+    background: linear-gradient(to bottom, 
+        rgba(255, 255, 255, 0.03) 0%,
+        rgba(255, 255, 255, 0.01) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hover Effects */
+#contact p.contact-box:hover {
+    transform: translateY(-8px);
+    background: rgba(38, 42, 65, 0.85);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+    border-color: rgba(100, 149, 237, 0.3);
+}
+
+#contact p.contact-box:hover::before {
+    animation: cornerGlow 2s ease-in-out infinite;
+}
+
+/* Contact Icon */
 .contact-icon {
-    width: 40px;                /* Ukuran ikon */
-    height: 40px;               /* Ukuran ikon */
-    margin-bottom: 10px;        /* Memberikan jarak antara ikon dan teks */
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    filter: 
+        drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3))
+        brightness(1.1);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
 }
 
-/* Mengubah warna tautan saat hover */
-#contact p a:hover {
-    color: #fff;                /* Ubah warna teks menjadi putih saat hover */
-    text-decoration: underline; /* Memberikan efek garis bawah saat hover */
+#contact p.contact-box:hover .contact-icon {
+    transform: scale(1.1);
+    filter: 
+        drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4))
+        brightness(1.2);
+}
+
+/* Contact Text */
+#contact p.contact-box {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    line-height: 1.5;
+    position: relative;
+    z-index: 3;
+}
+
+/* Contact Links */
+#contact p.contact-box a {
+    color: #6495ed;
+    text-decoration: none;
+    font-weight: 600;
+    margin-top: 8px;
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(100, 149, 237, 0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(100, 149, 237, 0.3);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 3;
+}
+
+#contact p.contact-box:hover a {
+    color: #ffd700;
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.3);
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Different Colors for Each Contact Box */
+#contact p.contact-box:nth-child(1) { /* Email */
+    background: rgba(30, 40, 70, 0.7);
+}
+
+#contact p.contact-box:nth-child(1):hover {
+    background: rgba(40, 50, 90, 0.85);
+}
+
+#contact p.contact-box:nth-child(1)::before {
+    background: linear-gradient(135deg, 
+        rgba(46, 167, 204, 0.8) 0%, 
+        rgba(39, 102, 174, 0.6) 25%,
+        transparent 50%,
+        rgba(46, 134, 222, 0.6) 75%,
+        rgba(52, 152, 219, 0.8) 100%);
+}
+
+#contact p.contact-box:nth-child(2) { /* WhatsApp */
+    background: rgba(40, 60, 50, 0.7);
+}
+
+#contact p.contact-box:nth-child(2):hover {
+    background: rgba(50, 80, 60, 0.85);
+}
+
+#contact p.contact-box:nth-child(2)::before {
+    background: linear-gradient(135deg, 
+        rgba(76, 175, 80, 0.8) 0%, 
+        rgba(56, 142, 60, 0.6) 25%,
+        transparent 50%,
+        rgba(139, 195, 74, 0.6) 75%,
+        rgba(205, 220, 57, 0.8) 100%);
+}
+
+#contact p.contact-box:nth-child(3) { /* Instagram */
+    background: rgba(70, 30, 60, 0.7);
+}
+
+#contact p.contact-box:nth-child(3):hover {
+    background: rgba(90, 40, 80, 0.85);
+}
+
+#contact p.contact-box:nth-child(3)::before {
+    background: linear-gradient(135deg, 
+        rgba(233, 30, 99, 0.8) 0%, 
+        rgba(194, 24, 91, 0.6) 25%,
+        transparent 50%,
+        rgba(156, 39, 176, 0.6) 75%,
+        rgba(103, 58, 183, 0.8) 100%);
+}
+
+#contact p.contact-box:nth-child(4) { /* Itch.io */
+    background: rgba(50, 40, 70, 0.7);
+}
+
+#contact p.contact-box:nth-child(4):hover {
+    background: rgba(70, 50, 90, 0.85);
+}
+
+#contact p.contact-box:nth-child(4)::before {
+    background: linear-gradient(135deg, 
+        rgba(255, 87, 34, 0.8) 0%, 
+        rgba(244, 81, 30, 0.6) 25%,
+        transparent 50%,
+        rgba(255, 152, 0, 0.6) 75%,
+        rgba(255, 193, 7, 0.8) 100%);
+}
+
+/* Pulse Animation on Icons */
+.contact-icon {
+    animation: pulseIcon 3s ease-in-out infinite;
+}
+
+#contact p.contact-box:hover .contact-icon {
+    animation: pulseIcon 1.5s ease-in-out infinite;
+}
+
+/* Floating Animation */
+@keyframes floatContact {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+#contact p.contact-box {
+    animation: floatContact 5s ease-in-out infinite;
+}
+
+#contact p.contact-box:hover {
+    animation: none;
+}
+
+#contact p.contact-box:nth-child(1) {
+    animation-delay: 0s;
+}
+
+#contact p.contact-box:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+#contact p.contact-box:nth-child(3) {
+    animation-delay: 1s;
+}
+
+#contact p.contact-box:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    #contact {
+        max-width: 900px;
+    }
+    
+    #contact p.contact-box {
+        width: 220px;
+        height: 170px;
+    }
+}
+
+@media (max-width: 768px) {
+    #contact.section {
+        padding: 40px 15px;
+    }
+    
+    #contact h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+    
+    #contact {
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    #contact p.contact-box {
+        width: 200px;
+        height: 160px;
+        padding: 25px 20px;
+        border-radius: 20px;
+    }
+    
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+        margin-bottom: 12px;
+    }
+    
+    #contact p.contact-box {
+        font-size: 15px;
+    }
+    
+    #contact p.contact-box a {
+        font-size: 14px;
+        padding: 4px 12px;
+    }
+    
+    #contact p.contact-box::before {
+        border-radius: 20px;
+    }
+    
+    #contact p.contact-box::after {
+        border-radius: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    #contact {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    #contact p.contact-box {
+        width: 85%;
+        max-width: 300px;
+        height: 150px;
+        border-radius: 18px;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    #contact p.contact-box::before {
+        border-radius: 18px;
+    }
+    
+    #contact p.contact-box::after {
+        border-radius: 16px;
+    }
+}
+
+/* Update Link Colors Global */
+a {
+    color: #6495ed;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #ffd700;
+    text-decoration: none;
+}
+
+
+footer {
+    background-color: #18152289;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    position: relative;
+    width: 100%;
+    clear: both;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+    padding: 15px;
+    font-size: 16px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
